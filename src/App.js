@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,6 +14,7 @@ import {
 } from "react-router-dom";
 import Read from './components/read';
 import Create from './components/create';
+import Edit from './components/edit';
 
 class App extends Component {
   render() {
@@ -35,6 +35,7 @@ class App extends Component {
           <Route path="/" exact><Content /></Route>
           <Route path="/create"><Create></Create></Route>
           <Route path="/read"><Read></Read></Route>
+          <Route path={"/edit/:id"} component={Edit}></Route>
         </Switch>
       </div>
       </Router>

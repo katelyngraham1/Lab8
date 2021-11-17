@@ -56,9 +56,10 @@ app.post('/api/movies', (req,res)=>{
     res.send('Data Sent to Server!')
 })
 
+// Listening for id coming in 
 app.get('/api/movies/:id',(req, res)=>{
     console.log(req.params.id);
-
+    // Finding a record with particular id
     movieModel.findById(req.params.id,(error,data)=>{
         res.json(data);
     })
@@ -67,10 +68,20 @@ app.get('/api/movies/:id',(req, res)=>{
 app.get('/api/movies', (req, res) => {
     movieModel.find((err, data)=>{
         res.json(data);
-    })
-          
+    }) 
            // https://m.media-amazon.com/images/M/MV5BNDQ4YzFmNzktMmM5ZC00MDZjLTk1OTktNDE2ODE4YjM2MjJjXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg
-      
+})
+
+// Updating particular id
+app.put('/api/movies/:id', (req, res)=>{
+    console.log('Updating: ' + req.params.id)
+
+    // Find id and update
+    movieModel.findByIdAndUpdate(req.params.id, req.body, {new:true},
+        (err, data) => {
+        res.send(data);
+})
+
 })
 
 
